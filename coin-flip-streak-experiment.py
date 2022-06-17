@@ -106,21 +106,3 @@ def coinFlipStreaks():  # main
 
 
 coinFlipStreaks()
-
-
-#  this is just to show how inefficiently i was previously doing it:
-#while currentCheck <= (len(coinFlipsList) - 6):  # doesn't need to check last 6 values as for loop checks them
-        #for x in range(currentCheck, currentCheck + 6):  # iterates through all 6 subsequent values
-        #    streakCheck += coinFlipsList[x]  # appends to a string the current index of coinFlipsList
-        #    if streakCheck == 'HHHHHH':
-        #        numberOfStreaks += 1
-        #        currentCheck += 6
-        #    elif streakCheck == 'TTTTTT':
-        #        numberOfStreaks += 1
-        #        currentCheck += 6
-        #    else:
-        #        currentCheck += 1
-        #    streakCheck = ''
-    #if numberOfStreaks > 1:
-    #    streakOccured = 1
-    #    return streakOccurred
