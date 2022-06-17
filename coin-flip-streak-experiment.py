@@ -28,6 +28,7 @@ def checkForNumberOfStreaks(listToCheck, lengthOfStreak):
 
 
 def userInput():
+    sure = 0
     while True:
         try:
             lengthOfDesiredStreak = int(input('Please enter the length of desired streak: '))
@@ -49,11 +50,7 @@ def userInput():
                     except ValueError:
                         print('Input must be an integer. Try again...')
                         continue
-                    if sure == 1:
-                        sure = 1
-                        break
-                    elif sure == 2:
-                        sure = 2
+                    if sure == 1 or sure == 2:
                         break
                     else:
                         print('Input must be a "1" or "2"')
@@ -78,18 +75,34 @@ def userInput():
 def coinFlipStreaks():  # main
     print('This program will check the probability of a streak (of a length you give) of heads or tails occuring in 100 coin flips.')
     print('It will perform this experiment as many times as you wish and print the average result over the given number of experiments.')
-    lengthOfDesiredStreak, numOfExperiments = userInput()
-    numberOfStreaksTotal = 0
-    streakOccurred = 0
-    print('Valid inputs; calculating result...')
-    for experimentNumber in range(numOfExperiments):
-        coinFlipsList = coinFlipListGenerator()  # makes coinFlipsList reference point to generated list
-        numberOfStreaks = checkForNumberOfStreaks(coinFlipsList, lengthOfDesiredStreak)
-        numberOfStreaksTotal += numberOfStreaks
-        if numberOfStreaks > 1:
-            streakOccurred += 1
-    print('The average number of streaks that occured in 100 coin flips was: {0}'. format(round((numberOfStreaksTotal / numOfExperiments), 2)))
-    print('Chance of at least one streak of {0} occuring in 100 coin flips: {1}%'.format(lengthOfDesiredStreak, round((streakOccurred / (numOfExperiments / 100)), 2)))
+    while True:
+        lengthOfDesiredStreak, numOfExperiments = userInput()
+        numberOfStreaksTotal = 0
+        streakOccurred = 0
+        print('Valid inputs; calculating result...')
+        for experimentNumber in range(numOfExperiments):
+            coinFlipsList = coinFlipListGenerator()  # makes coinFlipsList reference point to generated list
+            numberOfStreaks = checkForNumberOfStreaks(coinFlipsList, lengthOfDesiredStreak)
+            numberOfStreaksTotal += numberOfStreaks
+            if numberOfStreaks > 1:
+                streakOccurred += 1
+        print('The average number of streaks that occured in 100 coin flips was: {0}'. format(round((numberOfStreaksTotal / numOfExperiments), 2)))
+        print('Chance of at least one streak of {0} occuring in 100 coin flips: {1}%'.format(lengthOfDesiredStreak, round((streakOccurred / (numOfExperiments / 100)), 2)))
+        while True:
+            try:
+                again = int(input('Would you like to play again?\n1. Yes\n2. No\n'))
+                if again == 1 or again == 2:
+                    break
+                else:
+                    print('Input must be a "1" or "2"')
+                    continue
+            except ValueError:
+                print('Input must be an integer. Try again.')
+                continue
+        if again == 1:
+            continue
+        else:
+            break
 
 
 coinFlipStreaks()
