@@ -1,6 +1,7 @@
 # coin flip streaks inspired by Automate the Boring Stuff with Python Chapter 4
 
 import random
+import pyinputplus
 
 
 def coinFlipListGenerator():  # generates a list of 100 coin flip results and returns the reference to the list
@@ -13,7 +14,7 @@ def coinFlipListGenerator():  # generates a list of 100 coin flip results and re
     return generatedList
 
 
-def checkForNumberOfStreaks(listToCheck, lengthOfStreak):
+def checkForNumberOfStreaks(listToCheck: list, lengthOfStreak: list):
     numberOfStreaks = 0
     streakCheck = 1
     for i in range(1, len(listToCheck)):  # skip 0 as list checks previous index
