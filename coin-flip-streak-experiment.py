@@ -85,7 +85,7 @@ def coinFlipStreaks():  # main
             coinFlipsList = coinFlipListGenerator()  # makes coinFlipsList reference point to generated list
             numberOfStreaks = checkForNumberOfStreaks(coinFlipsList, lengthOfDesiredStreak)
             numberOfStreaksTotal += numberOfStreaks
-            if numberOfStreaks > 1:
+            if numberOfStreaks > 0:  # if at least one streak occured: increment streakOccurred
                 streakOccurred += 1
         print('The average number of streaks that occured in 100 coin flips was: {0}'. format(round((numberOfStreaksTotal / numOfExperiments), 2)))
         print('Chance of at least one streak of {0} occuring in 100 coin flips: {1}%'.format(lengthOfDesiredStreak, round((streakOccurred / (numOfExperiments / 100)), 2)))
